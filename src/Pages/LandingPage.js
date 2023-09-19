@@ -9,7 +9,7 @@ export default class LandingPage extends React.Component {
   }
 
   // componentDidMount = () => {
-  //   console.log("HMMM");
+  //   // console.log("HMMM");
   //   setTimeout(() => {
   //     this.props.toLogIn();
   //   }, 1500);
@@ -22,9 +22,12 @@ export default class LandingPage extends React.Component {
         <div className="videoholder">
           <video id="videosrc" src={videoBG} autoPlay loop muted />
           <div className="landingtext">
-            <h1>Fruits Basket</h1>
-            <br />
-            <p>Making your grandmother's advice obselete</p>
+            <h1 className="openingtext">
+              Fruits
+              <br />
+              Basket
+            </h1>
+            <p id="tagline">Only the freshest & finest fruits</p>
           </div>
         </div>
       </>

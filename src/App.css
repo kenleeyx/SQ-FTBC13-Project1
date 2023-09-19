@@ -1,21 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .mainScreenContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  background-color: hsl(24, 100%, 66%);
-  height: fit-content;
+  /* background-color: #fffae0; */
+
+  /* background: rgb(231, 192, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(229, 222, 255, 1) 0%,
+    rgba(244, 224, 238, 1) 30%,
+    rgba(255, 250, 224, 1) 100%
+  ); */
+
+  /* min-height: 100vh; */
+  /* max-height: 100vh; */
+  /* max-height: 100lvh; */
+
+  /* height: fit-content; */
+  height: 100%;
   width: 100vw;
   /* width: 100px; */
-  padding-top: 6em;
-  padding-bottom: 4em;
+  padding-top: 0em;
+  padding-bottom: 2em;
+
+  background-size: 100%;
+
+  /* position: sticky; */
   /* padding: 200px 0px 0px 0px; */
   /* not sure why adding any padding here affects the videoHolder */
 }
 
 .navbar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  column-gap: 2rem;
 
   align-items: baseline;
   width: 100vw;
@@ -23,9 +47,14 @@
 
   z-index: 999;
   position: fixed;
-  padding: 1em 0px 1em 0px;
+  right: 0rem;
+  padding: 1em 1em 1em 0px;
 
-  background-color: white;
+  background-color: #fffae0;
+
+  box-shadow: rgba(170, 170, 170, 0.1) 0px 2px 2px 0px;
+
+  /* border-radius: 0.5rem; */
 }
 
 #catalogWrapper {
@@ -33,53 +62,135 @@
   display: flex;
   flex-direction: column;
 
+  /* row-gap: 1rem; */
+
   width: 90vw;
-  padding: 0px;
+  padding: 4.5em 0em 0em 0em;
   /* padding-top: 200px;
   padding-bottom: 500px; */
 
   /* text-align: center; */
   /* the padding is somehow causing scrollbar both horizontally and vertically to appear if it exceeds vertically */
 
-  background-color: rgb(76, 243, 140);
+  /* background-color: rgb(76, 243, 140); */
 }
 
 .foodCard {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+
+  /* gap: 1rem; */
 
   /* width: 80vw; */
   height: 3em;
   width: auto;
 
-  padding: 2em;
-  margin: 0.5rem 1rem 0.5rem 1rem;
-  background-color: rgb(133, 163, 84);
+  padding: 2.5rem 0rem 2.5rem 0rem;
+
+  /* Gap is clickable. for catalogWrapper */
+  /*Q: margins are still clickable, but now the top item doesnt have gap as oposed to when row-gap is used. */
+  margin: 0rem 0rem 0.6rem 0rem;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.5rem;
+
+  overflow: hidden;
 }
 
-.bodyCard {
+.foodCard:hover {
+  box-shadow: rgba(155, 156, 156, 0.2) 0px 2px 6px 0px inset;
+}
+
+.foodCardText {
+  font-family: "Playfair Display", serif;
+  color: rgb(34, 34, 34);
+  line-height: 1rem;
+  padding: 10px;
+  /* border: 1px solid black; */
+  .secondary {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    color: hsl(0, 0%, 49%);
+  }
+}
+
+/* LOG-IN PAGE */
+.loginWrapper {
+  /* If i enable flex, the nav bar also glitches. Not sure why. */
+  /* REMOVED NAV BAR */
   /* display: flex;
-  justify-content: flex-start; */
-  width: 80vw;
-  padding-top: 200px;
-  padding-bottom: 500px;
+  justify-content: center; */
+
+  /* position: absolute; */
+  /* bottom: 0; */
+
+  /* No Effect */
+  /* align-content: center;
+  align-items: center; */
+
+  text-align: center;
+  height: 25vh;
+  width: 100%;
+
+  /* margin-top: 50vh; */
+  /* min-height: 60svh; */
+  padding: 2rem 0rem 2rem 0rem;
 
   /* text-align: center; */
   /* the padding is somehow causing scrollbar both horizontally and vertically to appear if it exceeds vertically */
 
-  background-color: brown;
+  background-color: hsla(0, 0%, 100%, 1);
+  /* box-shadow: 5px 5px 9px rgba(94, 104, 121, 0.3); */
 }
 
+.loginBG {
+  /* position other than fixed will cause it to affect the navbar. */
+  /* position: relative;
+  top: -4em;
+  left: 0; */
+
+  width: 100%;
+  /* height: auto; */
+  /* height: 100%; */
+
+  z-index: -1;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.halfLogIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  margin-top: 0em;
+
+  width: 100vw;
+  /* height: 50%; */
+  /* gap: 0px; */
+}
+
+.loginImgWrapper {
+  /* position: relative; */
+  width: 100%;
+}
+
+/* CATALOG */
 .catalog {
   background-color: rgb(136, 231, 255);
 }
 
 .text-desc {
-  text-align: center;
-  padding: 0em 6em 0em 6em;
+  /* text-align: center; */
+  padding: 0em 0em 0em 0em;
 }
 
+/* LANDING PAGE */
 .landingtext {
+  font-family: "Poppins", sans-serif;
+
   position: absolute;
   width: 100%;
   height: 100%;
@@ -91,4 +202,23 @@
   justify-content: center;
   align-items: center;
   color: aliceblue;
+
+  .openingtext {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(4rem, 3vw + 4rem, 12rem);
+    line-height: clamp(3.5rem, 2vw + 3.5rem, 9rem);
+    padding: 0rem 1rem 0rem 1rem;
+  }
 }
+
+#tagline {
+  text-align: center;
+  /* background-color: red; */
+  padding: 0rem 2rem 0rem 2rem;
+}
+/* 
+input:focus {
+  box-shadow: rgba(255, 255, 255, 0.8) 0px 2px 2px 0px inset;
+  background-color: hsl(194, 86%, 94%, 0.5);
+  outline: 0.5px solid hsl(241, 100%, 89%);
+} */

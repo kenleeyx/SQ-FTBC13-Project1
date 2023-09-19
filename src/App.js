@@ -1,22 +1,28 @@
 import React from "react";
 import "./App.css";
 
-import LandingPage from "./Pages/LandingPage.js";
+import FRUITDATA from "./fruitdata.json";
+
+import LandingPage from "./Pages/LandingPage";
 import LogInPage from "./Pages/LogInPage.js";
 import CatalogPage from "./Pages/CatalogPage.js";
+import ShoppingListPage from "./Pages/ShoppingListPage.js";
+
 import NavBar from "./Components/NavBar/NavBar.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "LANDING",
-
+      page: "LOG-IN",
       searchmode: "SORTED",
+
+      shoppinglist: [],
     };
   }
 
   toLogInPage = () => {
+    // Can do a transition here
     this.setState({
       page: "LOG-IN",
     });
@@ -24,13 +30,18 @@ class App extends React.Component {
 
   componentDidMount = () => {
     // Q: Why does it console log TWICE?
-    setTimeout(() => {
-      // console.log("Test")
-      // this.setState({
-      //   page: "LOG-IN",
-      // });
-      this.toLogInPage();
-    }, 1500);
+    // setTimeout(() => {
+    //   // console.log("Test")
+    //   this.setState({
+    //     page: "LOG-IN",
+    //   });
+    //   this.toLogInPage();
+    // }, 1000);
+  };
+
+  componentDidUpdate = () => {
+    // console.log("UPDATED", this.state.shoppinglist);
+    this.shoppingListItems(this.state.shoppinglist);
   };
 
   changePageDummy = () => {
@@ -51,44 +62,123 @@ class App extends React.Component {
     });
   };
 
-  render() {
-    // const { digit } = this.state;
+  toShoppingListPage = () => {
+    this.setState({
+      page: "SHOPPINGLIST",
+    });
+  };
 
-    const fruitListMain = [
-      "apple",
-      "strawberry",
-      "pineapple",
-      "avocado",
-      "banana",
-      "cherry",
-    ];
+  addToShoppingList = (fruit) => {
+    console.log("toShoppingList passing down: ", fruit);
+    this.setState(
+      {
+        shoppinglist: [...this.state.shoppinglist, fruit],
+      },
+      () => {
+        console.log("addToShoppingList state: ", this.state.shoppinglist);
+      }
+    );
+  };
+
+  shoppingListItems = (indexes) => {
+    console.log("the indexes are: ", indexes);
+
+    for (let i = 0; i < FRUITDATA.length; i++) {
+      if (indexes.includes(i)) {
+        console.log("INCLUDES ", i);
+      }
+    }
+
+    // const shoppingList = FRUITDATA.map((fruit, index) => [
+    //   fruit.id,
+    //   index,
+    //   fruit.visual,
+    //   fruit.feel,
+    // ]);
+    // return shoppingList;
+  };
+
+  render() {
+    // const fruitListMain = [];
+
+    // const fruitListMain = FRUITDATA.map((fruit) => {
+    //   return fruit.id;
+    // });
+
+    const fruitListMain = FRUITDATA.map((fruit, index) => {
+      return [fruit.id, index, fruit.visual, fruit.feel];
+    });
+
+    // const fruitListShoppingList = console.log(this.shoppingListItems);
+
+    // const fruitIndexMain = FRUITDATA.map((fruit, index) => {
+    //   return index;
+    // });
+
+    // const fruitVisualMain = FRUITDATA.map((fruit) => {
+    //   return fruit.visual;
+    // });
+
+    // const fruitFeelMain = FRUITDATA.map((fruit) => {
+    //   return fruit.feel;
+    // });
+
+    // const fruitData = FRUITDATA.map((fruit) => {
+    //   console.log(fruit);
+    //   return fruit;
+    // });
+
+    // const { fruitListMain fruitIndexMain fruitVisualMain fruitFeelMain } =
+
+    // const fruitListMain = [
+    //   "apple",
+    //   "strawberry",
+    //   "pineapple",
+    //   "avocado",
+    //   "banana",
+    //   "cherry",
+    //   "peach",
+    //   "mango",
+    // ];
 
     return (
       <>
         <div>
-          {this.state.page !== "LANDING" && (
-            <NavBar catalogButton={this.toCatalogPage} />
+          {(this.state.page === "CATALOG" ||
+            this.state.page === "SHOPPINGLIST") && (
+            <NavBar
+              catalogButton={this.toCatalogPage}
+              shoppinglistButton={this.toShoppingListPage}
+              currState={this.state.page}
+            />
           )}
         </div>
 
         {/* {this.state.page === "LANDING" && <LandingPage />} */}
         <div className="mainScreenContainer">
-          <button
+          {/* Dummy Button */}
+          {/* <button
             onClick={() => {
               this.changePageDummy();
             }}
           >
             CLICK ME
-          </button>
+          </button> */}
           {this.state.page === "LANDING" && <LandingPage />}
-          {/* {this.state.page === "LANDING" && (
-            <LandingPage toLogIn={this.toLogInPage} />
-          )} */}
-          {this.state.page === "LOG-IN" && <LogInPage />}
+
+          {this.state.page === "LOG-IN" && (
+            <LogInPage catalogButton={this.toCatalogPage} />
+          )}
+
+          {this.state.page === "SHOPPINGLIST" && (
+            <ShoppingListPage addedItems={this.state.shoppinglist} />
+          )}
+
           {this.state.page === "CATALOG" && (
             <CatalogPage
               fruitList={fruitListMain}
               searchMode={this.state.searchmode}
+              addItemToList={this.addToShoppingList}
             />
           )}
         </div>
