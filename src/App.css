@@ -38,7 +38,7 @@
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   column-gap: 2rem;
 
   align-items: baseline;
@@ -55,6 +55,16 @@
   box-shadow: rgba(170, 170, 170, 0.1) 0px 2px 2px 0px;
 
   /* border-radius: 0.5rem; */
+  .searchbar-alignment {
+    /* padding-left: 3rem; */
+
+    justify-content: center;
+    width: 70%;
+  }
+  .switchbutton-alignment {
+    justify-content: center;
+    width: 30%;
+  }
 }
 
 #catalogWrapper {
@@ -75,6 +85,19 @@
   /* background-color: rgb(76, 243, 140); */
 }
 
+.foodCardWrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.5rem;
+  margin-bottom: 0.6rem;
+
+  overflow: hidden;
+}
+
 .foodCard {
   display: flex;
   justify-content: flex-start;
@@ -83,18 +106,18 @@
   /* gap: 1rem; */
 
   /* width: 80vw; */
-  height: 3em;
-  width: auto;
+  height: 6rem;
+  width: 100%;
 
   padding: 2.5rem 0rem 2.5rem 0rem;
 
   /* Gap is clickable. for catalogWrapper */
   /*Q: margins are still clickable, but now the top item doesnt have gap as oposed to when row-gap is used. */
-  margin: 0rem 0rem 0.6rem 0rem;
+  /* margin: 0rem 0rem 0.6rem 0rem; */
 
   background-color: rgb(255, 255, 255);
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 0.5rem;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.5rem; */
 
   overflow: hidden;
 }
@@ -107,7 +130,7 @@
   font-family: "Playfair Display", serif;
   color: rgb(34, 34, 34);
   line-height: 1rem;
-  padding: 10px;
+  padding: 0rem 0rem 0rem 0rem;
   /* border: 1px solid black; */
   .secondary {
     font-family: "Poppins", sans-serif;
@@ -116,33 +139,44 @@
   }
 }
 
+.addbutton-alignment {
+  /* display: flex;
+  justify-content: center; */
+
+  /* align-content: center;
+  justify-content: center;
+  align-self: center; */
+
+  /* Apparently centering a button is text-align. */
+  text-align: center;
+  width: 30%;
+
+  /* padding-left: 0.3rem; */
+  background-color: rgb(255, 255, 255);
+}
+
 /* LOG-IN PAGE */
 .loginWrapper {
   /* If i enable flex, the nav bar also glitches. Not sure why. */
   /* REMOVED NAV BAR */
   /* display: flex;
   justify-content: center; */
-
-  /* position: absolute; */
-  /* bottom: 0; */
-
-  /* No Effect */
-  /* align-content: center;
-  align-items: center; */
+  position: absolute;
+  bottom: 0;
 
   text-align: center;
-  height: 25vh;
   width: 100%;
 
   /* margin-top: 50vh; */
   /* min-height: 60svh; */
-  padding: 2rem 0rem 2rem 0rem;
+  padding: 2rem 0rem 1.4rem 0rem;
 
   /* text-align: center; */
   /* the padding is somehow causing scrollbar both horizontally and vertically to appear if it exceeds vertically */
 
   background-color: hsla(0, 0%, 100%, 1);
   /* box-shadow: 5px 5px 9px rgba(94, 104, 121, 0.3); */
+  z-index: 60;
 }
 
 .loginBG {
@@ -173,8 +207,24 @@
 }
 
 .loginImgWrapper {
-  /* position: relative; */
+  position: relative;
+
   width: 100%;
+
+  .openingtext {
+    /* Even though it's absolute, it's always in relation to parent. i.e. the image. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(4rem, 3vw + 4rem, 12rem);
+    line-height: clamp(3.5rem, 2vw + 3.5rem, 9rem);
+    padding: 0rem 1rem 0rem 1rem;
+  }
 }
 
 /* CATALOG */

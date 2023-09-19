@@ -36,7 +36,7 @@ class App extends React.Component {
     //     page: "LOG-IN",
     //   });
     //   this.toLogInPage();
-    // }, 1000);
+    // }, 3000);
   };
 
   componentDidUpdate = () => {
@@ -70,28 +70,29 @@ class App extends React.Component {
 
   addToShoppingList = (fruit) => {
     console.log("toShoppingList passing down: ", fruit);
-    this.setState(
-      {
-        shoppinglist: [...this.state.shoppinglist, fruit],
-      },
-      () => {
-        console.log("addToShoppingList state: ", this.state.shoppinglist);
-      }
-    );
+    let checkList = this.state.shoppinglist;
+    if (checkList.includes(fruit)) {
+      // Possibility of adding a popup if already added? or change the button
+      console.log("already the shopping list!");
+    } else {
+      this.setState(
+        {
+          shoppinglist: [...this.state.shoppinglist, fruit],
+        },
+        () => {
+          console.log("addToShoppingList state: ", this.state.shoppinglist);
+        }
+      );
+    }
   };
 
   shoppingListItems = (indexes) => {
     // console.log("the indexes are: ", indexes);
-    let importedList = [];
+    // let importedList = [];
     let exportedList = [];
 
-    for (let i = 0; i < FRUITDATA.length; i++) {
-      if (indexes.includes(i)) {
-        importedList.push(i);
-      }
-    }
-
-    for (let index of importedList) {
+    // Directly access this.state.shoppinglist for the order of items added.
+    for (let index of this.state.shoppinglist) {
       let temp = [];
 
       temp.push(FRUITDATA[index].id);

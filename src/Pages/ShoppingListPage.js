@@ -20,7 +20,7 @@ export default class ShoppingListPage extends React.Component {
   });
 
   render() {
-    console.log(this.props.addedItems);
+    // console.log(this.props.addedItems);
     return (
       <>
         <div id="catalogWrapper">

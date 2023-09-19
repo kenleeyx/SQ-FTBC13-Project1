@@ -14,7 +14,7 @@ body {
 
   /* need to specify font-size in body css, will affect all the rems in the entire project */
   font-size: 16px;
-
+  min-height: 100vh;
   background-image: linear-gradient(
     0deg,
     rgba(229, 222, 255, 1) 0%,

@@ -5,8 +5,9 @@
   height: 10rem;
   min-width: 8rem;
   max-width: 8rem;
+
   position: relative;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 
   /* border-right: 1px solid hsl(0, 0%, 0%, 0.2); */
   border-radius: 0.5rem;

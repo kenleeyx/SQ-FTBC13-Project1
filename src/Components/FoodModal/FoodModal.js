@@ -50,7 +50,7 @@ export default class FoodModal extends React.Component {
               : `modalWindow `
           }
         >
-          <div className="modalText">
+          <div className="modalText overflow-y-auto">
             <div className="imgHolder">
               <img
                 src={`../../Images/${this.props.fruitName}.jpg`}
@@ -62,6 +62,8 @@ export default class FoodModal extends React.Component {
             <h2 className="primary">
               {this.props.fruitName.toString().toUpperCase()}
             </h2>
+
+            {/* //// For some reason, cant access JSON here. So i had to pass it in as a prop, all the way from App.js */}
             {/* Fruit Descriptions */}
             {/* <p>{newindex}</p> */}
             {/* <p>{console.log({FRUITDATA[{ newindex }]["feel"]})}</p> */}
@@ -69,12 +71,13 @@ export default class FoodModal extends React.Component {
             {/* <p>{console.log({FRUITDATA[{ newindex }]})}</p> */}
             {/* <p className="secondary">{FRUITDATA[0].visual}</p> */}
             {/* <p className="secondary">{FRUITDATA[{ newindex }].visual}</p> */}
-
-            <p className="miniHeader">Visual Cues</p>
-            <p className="secondary">{this.props.fruitVisual}</p>
-            <br />
-            <p className="miniHeader">Textural Cues</p>
-            <p className="secondary">{this.props.fruitFeel}</p>
+            <div className="paddingFix">
+              <p className="miniHeader">Visual Cues</p>
+              <p className="secondary">{this.props.fruitVisual}</p>
+              <br />
+              <p className="miniHeader">Textural Cues</p>
+              <p className="secondary">{this.props.fruitFeel}</p>
+            </div>
 
             <button
               onClick={this.props.toggleModalAction}

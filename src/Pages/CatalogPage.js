@@ -14,46 +14,9 @@ export default class CatalogPage extends React.Component {
     };
   }
 
-  // By default, the fruits are sorted Alphabetically
-  // fullFruitsMenuSorted = this.props.fruitList
-  //   .sort()
-  //   .map((fruit) => <FoodCard fruitName={fruit} />);
-
-  // fullFruitsMenu = this.props.fruitList.map((item) => {
-  //   return item[0];
-  // });
-
-  // fullFruitsIndex = this.props.fruitList.map((item) => {
-  //   return item[1];
-  // });
-
   addToAddedList = (fruit) => {
-    // let updatedList = this.state.addedList.push(fruit);
-    // this.setState(
-    //   {
-    //     addedList: [...this.state.addedList, fruit],
-    //   },
-    //   // The console.log here still doesnt update for some reason, even though it's within the setstate.
-    //   console.log("the added list: ", this.state.addedList)
-    // );
-
-    ///////
-    // this.setState(
-    //   {
-    //     addedFruit: fruit,
-    //   },
-    //   this.props.addItemToList(this.state.addedFruit)
-    // );
-    // console.log("passed down:", fruit);
     this.props.addItemToList(fruit);
   };
-
-  // componentDidUpdate = () => {
-  //   // This one will!
-  //   console.log("component did update:", this.state.addedFruit);
-  //   // this.props.addItemToList
-  //   this.props.addItemToList(this.state.addedFruit);
-  // };
 
   fullFruitsMenuSorted = this.props.fruitList.map((fruit) => {
     // console.log(fruit);

@@ -28,6 +28,13 @@
   },
 
   {
+    "id": "mango",
+    "imagelink": "../../Images/mango.jpg",
+    "visual": "mango stuff.",
+    "feel": "mangomango."
+  },
+
+  {
     "id": "pineapple",
     "imagelink": "../../Images/pineapple.jpg",
     "visual": "As the fruit begins to ripen, it will turn yellow and golden in color and consistent throughout the body. A ripe pineapple will be yellow all the way to the crown which means that sugar has been evenly distributed throughout.",
