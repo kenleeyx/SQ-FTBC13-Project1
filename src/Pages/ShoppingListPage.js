@@ -1,28 +1,30 @@
 import React from "react";
 import "../App.css";
 
-import FoodCard from "../Components/FoodCard/FoodCard.js";
+import FoodCardAdded from "../Components/FoodCardAdded/FoodCardAdded.js";
 
 export default class ShoppingListPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  // fullFruitsMenuSorted = this.props.fruitList
-  //   .sort()
-  //   .map((fruit) => <FoodCard fruitName={fruit} />);
-
-  // addedFruits = this.props.addedFruits;
-
-  // Get the index from App.js
-
-  // Output the Card
+  addedFruitsMenu = this.props.addedItems.map((fruit) => {
+    return (
+      <FoodCardAdded
+        fruitName={fruit[0]}
+        fruitIndex={fruit[1]}
+        fruitVisual={fruit[2]}
+        fruitFeel={fruit[3]}
+      />
+    );
+  });
 
   render() {
     console.log(this.props.addedItems);
     return (
       <>
         <div id="catalogWrapper">
+          {this.addedFruitsMenu}
           {/* {this.props.searchMode === "SORTED" && this.fullFruitsMenuSorted} */}
         </div>
       </>

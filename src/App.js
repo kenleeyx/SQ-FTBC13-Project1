@@ -41,7 +41,7 @@ class App extends React.Component {
 
   componentDidUpdate = () => {
     // console.log("UPDATED", this.state.shoppinglist);
-    this.shoppingListItems(this.state.shoppinglist);
+    // this.shoppingListItems(this.state.shoppinglist);
   };
 
   changePageDummy = () => {
@@ -81,14 +81,28 @@ class App extends React.Component {
   };
 
   shoppingListItems = (indexes) => {
-    console.log("the indexes are: ", indexes);
+    // console.log("the indexes are: ", indexes);
+    let importedList = [];
+    let exportedList = [];
 
     for (let i = 0; i < FRUITDATA.length; i++) {
       if (indexes.includes(i)) {
-        console.log("INCLUDES ", i);
+        importedList.push(i);
       }
     }
 
+    for (let index of importedList) {
+      let temp = [];
+
+      temp.push(FRUITDATA[index].id);
+      temp.push(index);
+      temp.push(FRUITDATA[index].visual);
+      temp.push(FRUITDATA[index].feel);
+
+      exportedList.push(temp);
+    }
+
+    return exportedList;
     // const shoppingList = FRUITDATA.map((fruit, index) => [
     //   fruit.id,
     //   index,
@@ -171,7 +185,9 @@ class App extends React.Component {
           )}
 
           {this.state.page === "SHOPPINGLIST" && (
-            <ShoppingListPage addedItems={this.state.shoppinglist} />
+            <ShoppingListPage
+              addedItems={this.shoppingListItems(this.state.shoppinglist)}
+            />
           )}
 
           {this.state.page === "CATALOG" && (
