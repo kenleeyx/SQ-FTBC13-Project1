@@ -9,15 +9,34 @@ export default class ShoppingListPage extends React.Component {
   }
 
   addedFruitsMenu = this.props.addedItems.map((fruit) => {
-    return (
-      <FoodCardAdded
-        fruitName={fruit[0]}
-        fruitIndex={fruit[1]}
-        fruitVisual={fruit[2]}
-        fruitFeel={fruit[3]}
-      />
-    );
+    console.log("SHOPPINGLIST CHECK: ", fruit[0]);
+    console.log("localStorage CHECK: ", localStorage.getItem(fruit[0]));
+
+    if (localStorage.getItem(fruit[0]) == true) {
+      console.log("entered loop for: ", fruit[0]);
+      return (
+        <FoodCardAdded
+          fruitName={fruit[0]}
+          fruitIndex={fruit[1]}
+          fruitVisual={fruit[2]}
+          fruitFeel={fruit[3]}
+        />
+      );
+    } else {
+      return null;
+    }
   });
+
+  // addedFruitsMenu = this.props.addedItems.map((fruit) => {
+  //   return (
+  //     <FoodCardAdded
+  //       fruitName={fruit[0]}
+  //       fruitIndex={fruit[1]}
+  //       fruitVisual={fruit[2]}
+  //       fruitFeel={fruit[3]}
+  //     />
+  //   );
+  // });
 
   render() {
     // console.log(this.props.addedItems);

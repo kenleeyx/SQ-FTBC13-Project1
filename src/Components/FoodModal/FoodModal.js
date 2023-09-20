@@ -71,6 +71,7 @@ export default class FoodModal extends React.Component {
             {/* <p>{console.log({FRUITDATA[{ newindex }]})}</p> */}
             {/* <p className="secondary">{FRUITDATA[0].visual}</p> */}
             {/* <p className="secondary">{FRUITDATA[{ newindex }].visual}</p> */}
+
             <div className="paddingFix">
               <p className="miniHeader">Visual Cues</p>
               <p className="secondary">{this.props.fruitVisual}</p>

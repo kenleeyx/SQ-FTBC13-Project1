@@ -71,6 +71,7 @@ class App extends React.Component {
   addToShoppingList = (fruit) => {
     console.log("toShoppingList passing down: ", fruit);
     let checkList = this.state.shoppinglist;
+
     if (checkList.includes(fruit)) {
       // Possibility of adding a popup if already added? or change the button
       console.log("already the shopping list!");

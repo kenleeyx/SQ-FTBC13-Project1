@@ -25,6 +25,9 @@ export default class FoodCard extends React.Component {
 
   handleClick = () => {
     // PASS THE PROP TO PARENT
+    // this.props.addItemButton(this.props.fruitIndex);
+
+    // PASS PROP TO PARENTS: prop is: [ fruitIndex , boolean]
     this.props.addItemButton(this.props.fruitIndex);
 
     console.log("HANDLE", this.state.isClicked);
@@ -35,13 +38,15 @@ export default class FoodCard extends React.Component {
       () => {
         // console.log("changed state is: ", this.state.isClicked);
         if (this.state.isClicked === true) {
-          // console.log("first branch");
+          // console.log("first branch");'
+          localStorage.setItem(this.props.fruitName, this.state.isClicked);
 
           this.setState({
             buttonText: "ADDED!",
           });
         } else if (this.state.isClicked === false) {
           // console.log("second branch");
+          localStorage.setItem(this.props.fruitName, this.state.isClicked);
 
           this.setState({
             buttonText: "ADD",
