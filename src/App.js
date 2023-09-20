@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "LOG-IN",
+      page: "LANDING",
       searchmode: "SORTED",
 
       shoppinglist: [],
@@ -30,18 +30,16 @@ class App extends React.Component {
 
   componentDidMount = () => {
     // Q: Why does it console log TWICE?
-    // setTimeout(() => {
-    //   // console.log("Test")
-    //   this.setState({
-    //     page: "LOG-IN",
-    //   });
-    //   this.toLogInPage();
-    // }, 3000);
+    setTimeout(() => {
+      this.setState({
+        page: "LOG-IN",
+      });
+      this.toLogInPage();
+    }, 3000);
   };
 
-  componentDidUpdate = () => {
-    // console.log("UPDATED", this.state.shoppinglist);
-    // this.shoppingListItems(this.state.shoppinglist);
+  componentWillUnmount = () => {
+    localStorage.clear();
   };
 
   changePageDummy = () => {

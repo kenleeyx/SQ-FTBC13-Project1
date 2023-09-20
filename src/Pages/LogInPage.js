@@ -8,8 +8,15 @@ export default class LogInPage extends React.Component {
     this.state = {
       username: "",
       password: "",
+      overlay: false,
     };
   }
+
+  componentDidMount = () => {
+    this.setState({
+      overlay: true,
+    });
+  };
 
   handleTextChange = (ev) => {
     // console.log(ev);
@@ -32,6 +39,9 @@ export default class LogInPage extends React.Component {
   render() {
     return (
       <>
+        {this.state.overlay === true && (
+          <div className="whiteoverlayLogIn"></div>
+        )}
         <div className="halfLogIn">
           <div className="loginImgWrapper">
             <h1 className="openingtext">

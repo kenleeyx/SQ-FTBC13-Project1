@@ -36,6 +36,54 @@
   /* not sure why adding any padding here affects the videoHolder */
 }
 
+.whiteoverlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  z-index: 100;
+
+  background-color: hsla(0, 0%, 100%);
+  opacity: 0;
+  animation: fadeIn 1s; /* Use a CSS animation with a 2-second duration */
+}
+
+/* Keyframes for the animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.whiteoverlayLogIn {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  z-index: 50;
+  /* somehow need the z-index to be under the log-in form, otherwise I can't type through */
+  /* Is there a way to get the z-index to change AFTER the animation? */
+  background-color: hsla(0, 0%, 100%);
+  opacity: 0;
+  animation: fadeIn2 1s; /* Use a CSS animation with a 2-second duration */
+}
+
+/* Keyframes for the animation */
+@keyframes fadeIn2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: flex-start;
@@ -129,6 +177,7 @@
   line-height: 1rem;
   padding: 0rem 0rem 0rem 0rem;
   /* border: 1px solid black; */
+
   .secondary {
     font-family: "Poppins", sans-serif;
     font-size: 0.8rem;
@@ -263,9 +312,9 @@
   /* background-color: red; */
   padding: 0rem 2rem 0rem 2rem;
 }
-/* 
-input:focus {
-  box-shadow: rgba(255, 255, 255, 0.8) 0px 2px 2px 0px inset;
-  background-color: hsl(194, 86%, 94%, 0.5);
-  outline: 0.5px solid hsl(241, 100%, 89%);
-} */
+
+.testing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

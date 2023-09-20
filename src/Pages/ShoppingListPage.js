@@ -6,6 +6,22 @@ import FoodCardAdded from "../Components/FoodCardAdded/FoodCardAdded.js";
 export default class ShoppingListPage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      anyItems: false,
+    };
+
+    if (this.props.addedItems.length > 0) {
+      // console.log("more than 1");
+      this.setState({
+        anyItems: true,
+      });
+    } else {
+      // console.log("no items");
+      this.setState({
+        anyItems: false,
+      });
+    }
   }
 
   addedFruitsMenu = this.props.addedItems.map((fruit) => {
@@ -51,8 +67,10 @@ export default class ShoppingListPage extends React.Component {
 
   render() {
     // console.log(this.props.addedItems);
+
     return (
       <>
+        {this.state.anyItems && <h1 className="testing">Hello</h1>}
         <div id="catalogWrapper">
           {this.addedFruitsMenu}
           {/* {this.props.searchMode === "SORTED" && this.fullFruitsMenuSorted} */}

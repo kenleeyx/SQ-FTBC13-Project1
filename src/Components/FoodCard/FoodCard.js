@@ -32,13 +32,21 @@ export default class FoodCard extends React.Component {
 
     // }
 
-    this.state = JSON.parse(localStorage.getItem(this.props.fruit));
+    const savedState = JSON.parse(localStorage.getItem(this.props.fruitName));
+
+    // this.state = JSON.parse(localStorage.getItem(this.props.fruitName));
 
     this.state = {
       modalState: false,
       buttonText: "start",
       isClicked: false,
     };
+
+    if (savedState) {
+      this.state = savedState;
+    }
+
+    //end
   }
 
   // if this.state.isClicked is false -> green button, text: ADD
@@ -129,17 +137,25 @@ export default class FoodCard extends React.Component {
 
   componentDidMount = () => {
     console.log("consoledidmount");
-    const savedState = localStorage.getItem(this.props.fruitName);
+    // const savedState = localStorage.getItem(this.props.fruitName);
 
-    if (savedState) {
-      this.setState(JSON.parse(savedState));
-    } else {
+    if (!localStorage.getItem(this.props.fruitName)) {
       this.setState({
         modalState: false,
-        buttonText: "START3",
-        isClicked: true,
+        buttonText: "START",
+        isClicked: false,
       });
     }
+
+    // if (savedState) {
+    //   this.setState(JSON.parse(savedState));
+    // } else {
+    //   this.setState({
+    //     modalState: false,
+    //     buttonText: "START3",
+    //     isClicked: true,
+    //   });
+    // }
 
     // if (savedState) {
     //   this.setState({
@@ -239,8 +255,8 @@ export default class FoodCard extends React.Component {
               className={
                 this.state.isClicked === true
                   ? // localStorage.getItem(this.props.fruitName) === false
-                    "btn btn-outline btn-error active:btn-error btn-xs addButton md:btn-md"
-                  : "btn btn-outline btn-success active:btn-accent btn-xs addButton md:btn-md"
+                    "btn btn-success active:btn-success btn-xs addButton md:btn-md"
+                  : "btn btn-outline btn-info active:btn-info btn-xs addButton md:btn-md"
               }
               onClick={this.handleClick}
             >

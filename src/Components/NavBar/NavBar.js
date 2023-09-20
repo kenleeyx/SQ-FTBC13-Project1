@@ -1,6 +1,10 @@
 import React from "react";
 import "../../App.css";
 
+// Q: Cant seem to import svgs. Only can copy and paste entirely like in FoodModal.
+// import { ReactComponent as saveIcon } from "../../Icons/saved.svg";
+// import saveIcon from "../../Icons/saved.js";
+
 export default class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +18,7 @@ export default class NavBar extends React.Component {
   handleTextChange = (ev) => {
     console.log(ev);
 
-    // I don't see name and value in event
+    // Q: I don't see value in event, so not too sure Why its like this
     let { name, value } = ev.target;
 
     this.setState({
@@ -48,7 +52,7 @@ export default class NavBar extends React.Component {
                 onClick={this.props.shoppinglistButton}
                 className="btn btn-sm btn-neutral sm:btn-sm md:btn-md"
               >
-                Cart
+                Saved
               </button>
             )}
             {this.props.currState === "SHOPPINGLIST" && (
