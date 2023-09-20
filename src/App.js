@@ -68,23 +68,55 @@ class App extends React.Component {
     });
   };
 
+  // fruit is [ fruitIndex , boolean ]
   addToShoppingList = (fruit) => {
-    console.log("toShoppingList passing down: ", fruit);
+    // console.log("toShoppingList passing down: ", fruit);
     let checkList = this.state.shoppinglist;
 
-    if (checkList.includes(fruit)) {
+    // if the new fruitIndex is an index of a fruit already inside the checklist
+    if (checkList.includes(fruit[0])) {
       // Possibility of adding a popup if already added? or change the button
-      console.log("already the shopping list!");
+      if (fruit[1] === true) {
+        console.log("already in the shopping list!");
+      }
+      if (fruit[1] === false) {
+        // console.log("FALSE BRANCH");
+        // pop the fruit, then set the the new array as the shopping list
+
+        for (let i = 0; i < checkList.length; i++) {
+          if (checkList[i] === fruit[0]) {
+            let temp = checkList.splice(i, 1);
+
+            this.setState({
+              shoppinglist: [...checkList],
+            });
+          }
+        }
+      }
     } else {
       this.setState(
         {
-          shoppinglist: [...this.state.shoppinglist, fruit],
+          shoppinglist: [...this.state.shoppinglist, fruit[0]],
         },
         () => {
-          console.log("addToShoppingList state: ", this.state.shoppinglist);
+          // console.log("addToShoppingList state: ", this.state.shoppinglist);
         }
       );
     }
+
+    // if (checkList.includes(fruit)) {
+    //   // Possibility of adding a popup if already added? or change the button
+    //   console.log("already in the shopping list!");
+    // } else {
+    //   this.setState(
+    //     {
+    //       shoppinglist: [...this.state.shoppinglist, fruit],
+    //     },
+    //     () => {
+    //       console.log("addToShoppingList state: ", this.state.shoppinglist);
+    //     }
+    //   );
+    // }
   };
 
   shoppingListItems = (indexes) => {

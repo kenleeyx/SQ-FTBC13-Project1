@@ -21,11 +21,12 @@ export default class LogInPage extends React.Component {
   };
 
   handleSubmit = () => {
-    if (this.state.username === "shanquan") {
-      this.props.catalogButton();
-    } else {
-      console.log("incorrect username and password");
-    }
+    this.props.catalogButton();
+    // if (this.state.username === "shanquan") {
+    //   this.props.catalogButton();
+    // } else {
+    //   console.log("incorrect username and password");
+    // }
   };
 
   render() {

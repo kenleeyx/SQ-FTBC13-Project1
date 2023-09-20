@@ -8,13 +8,27 @@ export default class FoodCard extends React.Component {
   constructor(props) {
     super(props);
 
+    if (localStorage.getItem(this.props.fruitName) === null) {
+      localStorage.setItem(this.props.fruitName, true);
+
+      this.state = {
+        modalState: false,
+
+        buttonText: "ADD",
+        isClicked: localStorage.getItem(this.props.fruitName),
+      };
+    }
+
     this.state = {
       modalState: false,
 
-      buttonText: "ADD",
-      isClicked: false,
+      buttonText: "ADD1",
+      isClicked: localStorage.getItem(this.props.fruitName),
     };
   }
+
+  // if this.state.isClicked is false -> green button, text: ADD
+  // if this.state.isClicked is true -> red button, text: ADDED
 
   //Function for Child: To toggle the pop-up modal window
   openModal = () => {
@@ -28,25 +42,33 @@ export default class FoodCard extends React.Component {
     // this.props.addItemButton(this.props.fruitIndex);
 
     // PASS PROP TO PARENTS: prop is: [ fruitIndex , boolean]
-    this.props.addItemButton(this.props.fruitIndex);
+    // this.props.addItemButton([this.props.fruitIndex, !this.state.isClicked]);
 
-    console.log("HANDLE", this.state.isClicked);
+    // console.log("HANDLE", this.state.isClicked);
+    localStorage.setItem(this.props.fruitName, !this.state.isClicked);
+
     this.setState(
       {
         isClicked: !this.state.isClicked,
       },
+
       () => {
+        console.log("post, ", this.state.isClicked);
+        this.props.addItemButton([this.props.fruitIndex, this.state.isClicked]);
+
+        // this.props.addItemButton([this.props.fruitIndex, this.state.isClicked]);
+
         // console.log("changed state is: ", this.state.isClicked);
         if (this.state.isClicked === true) {
           // console.log("first branch");'
-          localStorage.setItem(this.props.fruitName, this.state.isClicked);
+          // localStorage.setItem(this.props.fruitName, this.state.isClicked);
 
           this.setState({
             buttonText: "ADDED!",
           });
-        } else if (this.state.isClicked === false) {
+        } else if (localStorage.getItem(this.props.fruitName) === false) {
           // console.log("second branch");
-          localStorage.setItem(this.props.fruitName, this.state.isClicked);
+          // localStorage.setItem(this.props.fruitName, this.state.isClicked);
 
           this.setState({
             buttonText: "ADD",
@@ -54,6 +76,25 @@ export default class FoodCard extends React.Component {
         }
       }
     );
+
+    // this.props.addItemButton([this.props.fruitIndex, this.state.isClicked]);
+
+    // console.log("changed state is: ", this.state.isClicked);
+    // if (this.state.isClicked === true) {
+    //   // console.log("first branch");'
+    //   localStorage.setItem(this.props.fruitName, this.state.isClicked);
+
+    //   this.setState({
+    //     buttonText: "ADDED!",
+    //   });
+    // } else if (this.state.isClicked === false) {
+    //   // console.log("second branch");
+    //   localStorage.setItem(this.props.fruitName, this.state.isClicked);
+
+    //   this.setState({
+    //     buttonText: "ADD",
+    //   });
+    // }
 
     // // if isclicked is true, button text ADDED
     // if (this.state.isClicked === false) {
@@ -70,29 +111,33 @@ export default class FoodCard extends React.Component {
 
     // if isclicked is false, button text is ADD
 
-    console.log("FoodCard handleClick - added index: ", this.props.fruitIndex);
+    // console.log("FoodCard handleClick - added index: ", this.props.fruitIndex);
   };
 
-  componentDidMount = () => {
-    if (localStorage.getItem(this.props.fruitName) != null) {
-      // console.log("First instance of: ", this.props.fruitName);
-      console.log(
-        "initalised old state of: ",
-        localStorage.getItem(this.props.fruitName)
-      );
+  // componentDidMount = () => {
+  //   if (!localStorage.getItem(this.props.fruitName) === null) {
+  //     console.log("NOT an null item of: ", this.props.fruitName);
+  //     console.log(
+  //       "initalised old state of: ",
+  //       localStorage.getItem(this.props.fruitName)
+  //     );
 
-      this.setState(
-        {
-          isClicked: localStorage.getItem(this.props.fruitName),
-        },
-        () => {
-          console.log("the changed state is: ", this.state.isClicked);
-        }
-      );
-    } else {
-      console.log("Else branch");
-    }
-  };
+  //     this.setState(
+  //       {
+  //         isClicked: localStorage.getItem(this.props.fruitName),
+  //       },
+  //       () => {
+  //         console.log("the changed state is: ", this.state.isClicked);
+  //       }
+  //     );
+  //   }
+
+  //   if (localStorage.getItem(this.props.fruitName) === null) {
+  //     this.setState({
+  //       isClicked: false,
+  //     });
+  //   }
+  // };
 
   render() {
     // Locks the scroll for document.body if the this.state.modalState: true
@@ -139,12 +184,14 @@ export default class FoodCard extends React.Component {
             <button
               className={
                 this.state.isClicked === true
-                  ? "btn btn-outline btn-error active:btn-error btn-xs addButton md:btn-md"
+                  ? // localStorage.getItem(this.props.fruitName) === false
+                    "btn btn-outline btn-error active:btn-error btn-xs addButton md:btn-md"
                   : "btn btn-outline btn-success active:btn-accent btn-xs addButton md:btn-md"
               }
               onClick={this.handleClick}
             >
               {this.state.buttonText}
+              {this.state.isClicked}
             </button>
           </div>
         </div>

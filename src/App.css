@@ -51,16 +51,13 @@
   padding: 1em 1em 1em 0px;
 
   background-color: #fffae0;
-
   box-shadow: rgba(170, 170, 170, 0.1) 0px 2px 2px 0px;
 
-  /* border-radius: 0.5rem; */
   .searchbar-alignment {
-    /* padding-left: 3rem; */
-
     justify-content: center;
     width: 70%;
   }
+
   .switchbutton-alignment {
     justify-content: center;
     width: 30%;
