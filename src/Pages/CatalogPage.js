@@ -19,8 +19,6 @@ export default class CatalogPage extends React.Component {
   };
 
   fullFruitsMenuSorted = this.props.fruitList.map((fruit) => {
-    // console.log(fruit);
-    // let fruitid = fruit[0];
     return (
       <FoodCard
         fruitName={fruit[0]}
@@ -36,7 +34,7 @@ export default class CatalogPage extends React.Component {
   //   return <FoodCard fruitName={fruit} />;
   // });
 
-  //Originally I sorted here. But cant make it work..
+  // Q: Originally I sorted here. But cant make it work..
   // fullFruitsMenuSorted = this.fullFruitsMenu.sort().map((fruit) => {
   //   return <FoodCard fruitName={fruit} />;
   // });

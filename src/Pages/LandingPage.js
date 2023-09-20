@@ -13,9 +13,7 @@ export default class LandingPage extends React.Component {
   }
 
   componentDidMount = () => {
-    // console.log("HMMM");
     setTimeout(() => {
-      console.log("trigger");
       this.setState({
         overlay: true,
       });
@@ -25,9 +23,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <>
-        {/* <div className="bodyCard">This is the landing page</div> */}
         {this.state.overlay === true && <div className="whiteoverlay"></div>}
-        {/* <div className="whiteoverlay"></div> */}
         <div className="videoholder">
           <video id="videosrc" src={videoBG} autoPlay loop muted />
           <div className="landingtext">

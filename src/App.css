@@ -128,6 +128,9 @@
   /* the padding is somehow causing scrollbar both horizontally and vertically to appear if it exceeds vertically */
 
   /* background-color: rgb(76, 243, 140); */
+  @media (min-width: 768px) {
+    padding: 5.5em 0em 0em 0em;
+  }
 }
 
 .foodCardWrapper {
@@ -314,7 +317,10 @@
 }
 
 .testing {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  text-align: center;
+  padding-top: 5rem;
+
+  .errorText {
+    font-family: "Poppins", sans-serif;
+  }
 }

@@ -139,10 +139,11 @@ export default class FoodCard extends React.Component {
     console.log("consoledidmount");
     // const savedState = localStorage.getItem(this.props.fruitName);
 
+    // This is the on-initialisation stage (i.e. first boot)
     if (!localStorage.getItem(this.props.fruitName)) {
       this.setState({
         modalState: false,
-        buttonText: "START",
+        buttonText: "ADD",
         isClicked: false,
       });
     }
@@ -221,7 +222,6 @@ export default class FoodCard extends React.Component {
 
     return (
       <>
-        {/* Child Component. Pop-Up on click */}
         <FoodModal
           toggleModalState={this.state.modalState}
           toggleModalAction={this.openModal}
@@ -254,26 +254,15 @@ export default class FoodCard extends React.Component {
             <button
               className={
                 this.state.isClicked === true
-                  ? // localStorage.getItem(this.props.fruitName) === false
-                    "btn btn-success active:btn-success btn-xs addButton md:btn-md"
+                  ? "btn btn-success active:btn-success btn-xs addButton md:btn-md"
                   : "btn btn-outline btn-info active:btn-info btn-xs addButton md:btn-md"
               }
               onClick={this.handleClick}
             >
               {this.state.buttonText}
-              {/* {this.state.isClicked} */}
             </button>
           </div>
         </div>
-        {/* 
-        <div className="addbuttonalignment">
-          <button
-            className="btn btn-outline btn-success active:btn-warning btn-xs addButton"
-            onClick={this.handleClick}
-          >
-            Add
-          </button>
-        </div> */}
       </>
     );
   }

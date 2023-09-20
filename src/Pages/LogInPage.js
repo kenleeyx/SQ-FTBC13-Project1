@@ -19,8 +19,6 @@ export default class LogInPage extends React.Component {
   };
 
   handleTextChange = (ev) => {
-    // console.log(ev);
-    // I don't see name and value in event
     let { name, value } = ev.target;
     this.setState({
       [name]: value,
@@ -29,11 +27,6 @@ export default class LogInPage extends React.Component {
 
   handleSubmit = () => {
     this.props.catalogButton();
-    // if (this.state.username === "shanquan") {
-    //   this.props.catalogButton();
-    // } else {
-    //   console.log("incorrect username and password");
-    // }
   };
 
   render() {
@@ -55,12 +48,9 @@ export default class LogInPage extends React.Component {
               alt="fruity"
             />
           </div>
-          {/* <div className="loginBG"></div> */}
           <div className="loginWrapper ">
             <div className="text-desc ">
               <form>
-                {/* <label> Username: </label> */}
-                {/* <br /> */}
                 <input
                   id="logIn-username"
                   type="text"
@@ -74,8 +64,6 @@ export default class LogInPage extends React.Component {
               </form>
               <br />
               <form>
-                {/* <label> Password: </label> */}
-                {/* <br /> */}
                 <input
                   id="logIn-password"
                   type="password"

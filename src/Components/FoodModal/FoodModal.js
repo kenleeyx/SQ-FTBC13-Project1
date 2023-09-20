@@ -13,25 +13,16 @@ export default class FoodModal extends React.Component {
     };
   }
 
-  // selectFruitIndex = (fruit) => {
-  //   FRUITDATA.map((fruitdata, index) => {
-  //     if (fruitdata.id === fruit) {
-  //       return index;
-  //     }
-  //   });
-  // };
-
   selectFruitIndex = (fruitJson) => {
     FRUITDATA.forEach((fruit, index) => {
       if (fruit.id === this.props.fruitName) {
-        // console.log(index);
         return index;
       }
     });
   };
 
   render() {
-    let newindex = this.selectFruitIndex(this.props.fruitName);
+    // let newindex = this.selectFruitIndex(this.props.fruitName);
     // const fruitindex = FRUITDATA.forEach((fruit, index) => {
     //   if (fruit.id === this.props.fruitName) {
     //     console.log(index);
