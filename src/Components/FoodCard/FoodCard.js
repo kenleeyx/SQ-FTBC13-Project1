@@ -8,22 +8,36 @@ export default class FoodCard extends React.Component {
   constructor(props) {
     super(props);
 
-    if (localStorage.getItem(this.props.fruitName) === null) {
-      localStorage.setItem(this.props.fruitName, true);
+    // if (localStorage.getItem(this.props.fruitName) === null) {
+    //   this.state = {
+    //     modalState: false,
 
-      this.state = {
-        modalState: false,
+    //     buttonText: "ADD",
+    //     isClicked: false,
+    //   };
+    // }
+    // else {
+    //   // console.log("consoledidmount");
+    //   // const savedState = localStorage.getItem(this.props.fruitName);
 
-        buttonText: "ADD",
-        isClicked: localStorage.getItem(this.props.fruitName),
-      };
-    }
+    //   // if (savedState) {
+    //   //   this.setState(JSON.parse(savedState));
+    //   // }
+
+    //     this.state = {
+    //       modalState: false,
+
+    //       buttonText: "ADD",
+    //       isClicked: localStorage.getItem(this.props.fruitName),
+
+    // }
+
+    this.state = JSON.parse(localStorage.getItem(this.props.fruit));
 
     this.state = {
       modalState: false,
-
-      buttonText: "ADD1",
-      isClicked: localStorage.getItem(this.props.fruitName),
+      buttonText: "start",
+      isClicked: false,
     };
   }
 
@@ -45,7 +59,7 @@ export default class FoodCard extends React.Component {
     // this.props.addItemButton([this.props.fruitIndex, !this.state.isClicked]);
 
     // console.log("HANDLE", this.state.isClicked);
-    localStorage.setItem(this.props.fruitName, !this.state.isClicked);
+    // localStorage.setItem(this.props.fruitName, !this.state.isClicked);
 
     this.setState(
       {
@@ -56,9 +70,8 @@ export default class FoodCard extends React.Component {
         console.log("post, ", this.state.isClicked);
         this.props.addItemButton([this.props.fruitIndex, this.state.isClicked]);
 
-        // this.props.addItemButton([this.props.fruitIndex, this.state.isClicked]);
-
-        // console.log("changed state is: ", this.state.isClicked);
+        // cant put localstorage in conditional, doesnt seem to trigger on click for some reason.
+        // if (localStorage.getItem(this.props.fruitName) === true) {
         if (this.state.isClicked === true) {
           // console.log("first branch");'
           // localStorage.setItem(this.props.fruitName, this.state.isClicked);
@@ -66,7 +79,7 @@ export default class FoodCard extends React.Component {
           this.setState({
             buttonText: "ADDED!",
           });
-        } else if (localStorage.getItem(this.props.fruitName) === false) {
+        } else if (this.state.isClicked === false) {
           // console.log("second branch");
           // localStorage.setItem(this.props.fruitName, this.state.isClicked);
 
@@ -112,6 +125,47 @@ export default class FoodCard extends React.Component {
     // if isclicked is false, button text is ADD
 
     // console.log("FoodCard handleClick - added index: ", this.props.fruitIndex);
+  };
+
+  componentDidMount = () => {
+    console.log("consoledidmount");
+    const savedState = localStorage.getItem(this.props.fruitName);
+
+    if (savedState) {
+      this.setState(JSON.parse(savedState));
+    } else {
+      this.setState({
+        modalState: false,
+        buttonText: "START3",
+        isClicked: true,
+      });
+    }
+
+    // if (savedState) {
+    //   this.setState({
+    //     buttonText: savedState[1],
+    //     isClicked: savedState[0],
+    //   });
+    // }
+
+    // if (localStorage.getItem !== null)
+    //   this.setState({
+    //     isClicked: localStorage.getItem(this.props.fruitName),
+    //   });
+  };
+
+  componentWillUnmount = () => {
+    console.log(
+      "consoleWillUnmount: ",
+      this.state.isClicked,
+      " ",
+      this.state.buttonText
+    );
+    // localStorage.setItem(this.props.fruitName, [
+    //   this.state.isClicked,
+    //   this.state.buttonText,
+    // ]);
+    localStorage.setItem(this.props.fruitName, JSON.stringify(this.state));
   };
 
   // componentDidMount = () => {
@@ -191,7 +245,7 @@ export default class FoodCard extends React.Component {
               onClick={this.handleClick}
             >
               {this.state.buttonText}
-              {this.state.isClicked}
+              {/* {this.state.isClicked} */}
             </button>
           </div>
         </div>
