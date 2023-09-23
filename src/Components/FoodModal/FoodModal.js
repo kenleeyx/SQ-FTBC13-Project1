@@ -44,10 +44,11 @@ export default class FoodModal extends React.Component {
           <div className="modalText overflow-y-auto">
             <div className="imgHolder">
               <img
-                src={`../../Images/${this.props.fruitName}.jpg`}
+                src={`./Images/${this.props.fruitName}.jpg`}
                 alt={this.props.fruitName}
                 className="imgSrc-foodCard"
               />
+              {console.log(this.props.fruitName)}
             </div>
             <br />
             <h2 className="primary">
