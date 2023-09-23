@@ -236,7 +236,7 @@ export default class FoodCard extends React.Component {
           <div className="foodCard" onClick={this.openModal}>
             <div className="foodCardImgWrapper">
               <img
-                src={`../../Images/${this.props.fruitName}.jpg`}
+                src={`./${this.props.fruitName}.jpg`}
                 alt={this.props.fruitName}
                 className="foodCardImg"
               />

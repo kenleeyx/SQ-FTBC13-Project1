@@ -1,7 +1,7 @@
 [
   {
     "id": "apple",
-    "imagelink": "./Images/apple.jpg",
+    "imagelink": "../../Images/apple.jpg",
     "visual": "Colour changes from green to light green; then to red or yellow. However, some highly colored apples change to red weeks before they are mature, so color is not always a reliable indicator.",
     "feel": "Make sure it's firm to the touch. Avoid apples that are noticeably soft, mushy, or indent easily after you press the skin."
   },
