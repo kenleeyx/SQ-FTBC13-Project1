@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SQ-FTBC13-Project1/static/css/main.6d0b11b7.css",
+    "main.js": "/SQ-FTBC13-Project1/static/js/main.672a2988.js",
+    "static/js/787.111b0861.chunk.js": "/SQ-FTBC13-Project1/static/js/787.111b0861.chunk.js",
+    "static/media/strawberriesvid.mp4": "/SQ-FTBC13-Project1/static/media/strawberriesvid.ef549d2dc04b5f5ab21f.mp4",
+    "index.html": "/SQ-FTBC13-Project1/index.html",
+    "main.6d0b11b7.css.map": "/SQ-FTBC13-Project1/static/css/main.6d0b11b7.css.map",
+    "main.672a2988.js.map": "/SQ-FTBC13-Project1/static/js/main.672a2988.js.map",
+    "787.111b0861.chunk.js.map": "/SQ-FTBC13-Project1/static/js/787.111b0861.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d0b11b7.css",
+    "static/js/main.672a2988.js"
+  ]
+}
